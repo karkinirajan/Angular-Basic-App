@@ -1,0 +1,13 @@
+# Dependencies and build output
+node_modules/
+dist/
+.angular/
+coverage/
+out-tsc/
+
+# Local environment
+.env
+.vscode/
+.idea/
+.DS_Store
+npm-debug.log*

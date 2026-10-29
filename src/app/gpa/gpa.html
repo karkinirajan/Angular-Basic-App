@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Grade Point Averages</h1>
+  <div class="d-flex justify-content-start align-items-center gap-3 mb-2">
+    <input
+      class="form-control w-25 p-1"
+      type="search"
+      placeholder="Search for the advisees"
+      aria-label="Search advisees"
+      [value]="query()"
+      (input)="onSearch($event)"
+    />
+    <span class="text-muted">{{ students().length }} shown</span>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sid</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gpa</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students(); track student.id) {
+        <tr>
+          <td>{{ student.id }}</td>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ formatGpa(student) }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4" class="text-center text-muted">No advisees match your search.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

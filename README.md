@@ -1,27 +1,58 @@
-# StudentsApp
+# Students App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
+An Angular app for a small student-advising demo: a table of advisees with live search, and a page with each advisee's grade point average (GPA points / credit hours, one decimal place).
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- **Advisees** (`/`): id, name, credit hours, GPA points and major for every student.
+- **Grade Point Averages** (`/gpa`): id, name and GPA; a student with no credit hours shows an en dash instead of `NaN`.
+- Search box on both pages filters by id, first/last name, full name or major, case-insensitively, with an empty-state message.
+- Navigation with active-link highlighting and an accessible collapsible menu on small screens (no jQuery or Bootstrap JS).
 
-## Code scaffolding
+## Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular 22 (standalone components, signals, zoneless), TypeScript 6, Bootstrap 5 (CSS from npm), Vitest + jsdom for tests, Prettier. Versions: [VERSIONS.md](./VERSIONS.md).
 
-## Build
+## Getting started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Requires Node 22.22.3+ or 24.15+ (see `.nvmrc`).
 
-## Running unit tests
+```bash
+git clone https://github.com/kneeraazon404/Angular-Basic-App.git
+cd Angular-Basic-App
+npm ci
+npm start          # http://localhost:4200
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Scripts
 
-## Running end-to-end tests
+| Command | What it does |
+|---|---|
+| `npm start` | dev server with live reload |
+| `npm run build` | production build into `dist/students-app` |
+| `npm run test:ci` | run the unit tests once (Vitest) |
+| `npm test` | tests in watch mode |
+| `npm run format` / `npm run format:check` | Prettier write / check |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Data
 
-## Further help
+The advisees come from `src/app/students/students.json` (strings, as in the original app) and are converted to typed records by `parseStudents` in `src/app/students/student.ts`. There is no backend; replace `STUDENTS` with a service call to use real data.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Project structure
+
+```
+src/app/
+  app.ts, app.html, app.routes.ts, app.config.ts   shell, navigation and routing
+  home/          advisees table + search
+  gpa/           GPA table + search
+  students/      student model, JSON data, parse / gpa / filter helpers (+ specs)
+public/          static assets (favicon)
+```
+
+## Testing
+
+13 tests cover the helpers (parsing, GPA maths, the zero-credit case, filtering), both pages (rendering, filtering as you type, empty state) and the app shell (links, menu toggle). CI (`.github/workflows/ci.yml`) runs format check, tests and a production build.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).
