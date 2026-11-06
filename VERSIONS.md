@@ -4,7 +4,7 @@ Resolved in `package-lock.json` on 2026-10-29.
 
 | Component | Version | Previous | Note |
 |---|---|---|---|
-| Node.js | 24 (`.nvmrc`); Angular requires ^22.22.3 or ^24.15 or >=26 | not stated | |
+| Node.js | 26 (`.nvmrc`); Angular requires ^22.22.3 or ^24.15 or >=26 | not stated | |
 | @angular/core | 22.2.3 | 13.0 | latest at generation time (CLI 22.2.5); LTS status not verified |
 | @angular/cli, @angular/build | 22.2.5 | 13.0.4 (`@angular-devkit/build-angular`) | new application builder |
 | TypeScript | 6.0.3 | 4.4 | |

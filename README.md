@@ -15,7 +15,7 @@ Angular 22 (standalone components, signals, zoneless), TypeScript 6, Bootstrap 5
 
 ## Getting started
 
-Requires Node 22.22.3+ or 24.15+ (see `.nvmrc`).
+Requires Node 26 (see `.nvmrc`; 22.22.3+ or 24.15+ also supported).
 
 ```bash
 git clone https://github.com/kneeraazon404/Angular-Basic-App.git
